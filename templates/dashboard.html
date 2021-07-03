@@ -1,0 +1,116 @@
+{% extends "base_dashboard.html" %}
+
+{% block content %}
+<div class="portfolio-header">
+    <h2> Portfolio </h2>
+    <h5> 5 coins </h2>
+</div>
+<div class="portfolio-body">
+    <table id = "portable" class="table table-striped">
+        <tr class = "main-row">
+            <th class="td-logo"></th>
+            <th class="curr-th">Coin</th>
+            <th class="curr-th">Amount</th>
+            <th class="curr-th">Invested</th>
+            <th class="curr-th">Value</th>
+            <th class="curr-th">Profit</th>
+            <th class="curr-action"></th>
+        </tr>
+        <tr class = "tr-euro">
+            <td class = "td-logo"><i style="color:white;" class="fas fa-euro-sign fa-3x"></i></td>
+            <td class = "td-name"><p>EUR</p></td>
+            <td class = "td-amount"><p>{{ session['user']['total_value'][1] }} €</p></td>
+            <td class = "td-invested"><p>{{ session['user']['total_value'][0] }} €</p></td>
+            <td class = "td-value"></td>
+            {% if session['user']['total_value'][2] >= 0 %}
+            <td class = "td-profit"> <p>{{ session['user']['total_value'][2] }} %</p> </td>
+            {% else %}
+            <td class = "td-deficit"> <p>{{ session['user']['total_value'][2] }} %</p> </td>
+            {% endif %}
+            <td class="curr-action"></td>
+        </tr>
+        <tr class = "tr-curr">
+            <td class = "td-logo"><i style="color:orange;" class="fab fa-bitcoin fa-3x"></i></td>
+            <td class = "td-name"><p>BTC</p></td>
+            <td class = "td-amount"> <p>{{ session['user']['portfolio']['BTC'][0] }}</p> </td>
+            <td class = "td-invested"> <p>{{ session['user']['portfolio']['BTC'][1] }} €</p> </td>
+            <td class = "td-value"> <p>{{ session['user']['portfolio']['BTC'][2] }} €</p> </td>
+            {% if session['user']['portfolio']['BTC'][3] >= 0 %}
+            <td class = "td-profit"> <p>{{ session['user']['portfolio']['BTC'][3] }} %</p> </td>
+            {% else %}
+            <td class = "td-deficit"> <p>{{ session['user']['portfolio']['BTC'][3] }} %</p> </td>
+            {% endif %}
+            <td class="curr-action">
+                <a class="btn btn-info" href="#"> Buy </button>
+                <a class="btn btn-warning" href="#"> Sell </button>
+            </td>
+        </tr>
+        <tr class = "tr-curr">
+            <td class = "td-logo"><i style="color:rgb(55, 108, 255);" class="fab fa-ethereum fa-3x"></i></td>
+            <td class = "td-name"> <p>ETH</p> </td>
+            <td class = "td-amount"> <p>{{ session['user']['portfolio']['ETH'][0] }}</p> </td>
+            <td class = "td-invested"> <p>{{ session['user']['portfolio']['ETH'][1] }} €</p> </td>
+            <td class = "td-value"> <p>{{ session['user']['portfolio']['ETH'][2] }} €</p> </td>
+            {% if session['user']['portfolio']['ETH'][3] >= 0 %}
+            <td class = "td-profit"> <p>{{ session['user']['portfolio']['ETH'][3] }} %</p> </td>
+            {% else %}
+            <td class = "td-deficit"> <p>{{ session['user']['portfolio']['ETH'][3] }} %</p> </td>
+            {% endif %}
+            <td class="curr-action">
+                <a class="btn btn-info" href="#"> Buy </button>
+                <a class="btn btn-warning" href="#"> Sell </button>
+            </td>
+        </tr>
+        <tr class = "tr-curr">
+            <td class = "td-logo"><i style="color:rgb(193, 203, 230);" class="fab fa-xing-square fa-3x"></i></td>
+            <td class = "td-name"> <p>XRP</p> </td>
+            <td class = "td-amount"> <p>{{ session['user']['portfolio']['XRP'][0] }}</p> </td>
+            <td class = "td-invested"> <p>{{ session['user']['portfolio']['XRP'][1] }} €</p> </td>
+            <td class = "td-value"> <p>{{ session['user']['portfolio']['XRP'][2] }} €</p> </td>
+            {% if session['user']['portfolio']['XRP'][3] >= 0 %}
+            <td class = "td-profit"> <p>{{ session['user']['portfolio']['XRP'][3] }} %</p> </td>
+            {% else %}
+            <td class = "td-deficit"> <p>{{ session['user']['portfolio']['XRP'][3] }} %</p> </td>
+            {% endif %}
+            <td class="curr-action">
+                <a class="btn btn-info" href="#"> Buy </button>
+                <a class="btn btn-warning" href="#"> Sell </button>
+            </td>
+        </tr>
+        <tr class = "tr-curr">
+            <td class = "td-logo"><i style="color:rgb(50, 76, 148);" class="fab fa-slack fa-3x"></i></td>
+            <td class = "td-name"> <p>ADA</p> </td>
+            <td class = "td-amount"> <p>{{ session['user']['portfolio']['ADA'][0] }}</p> </td>
+            <td class = "td-invested"> <p>{{ session['user']['portfolio']['ADA'][1] }} €</p> </td>
+            <td class = "td-value"> <p>{{ session['user']['portfolio']['ADA'][2] }} €</p> </td>
+            {% if session['user']['portfolio']['ADA'][3] >= 0 %}
+            <td class = "td-profit"> <p>{{ session['user']['portfolio']['ADA'][3] }} %</p> </td>
+            {% else %}
+            <td class = "td-deficit"> <p>{{ session['user']['portfolio']['ADA'][3] }} %</p> </td>
+            {% endif %}
+            <td class="curr-action">
+                <a class="btn btn-info" href="#"> Buy </button>
+                <a class="btn btn-warning" href="#"> Sell </button>
+            </td>
+        </tr>
+        <tr class = "tr-curr">
+            <td class = "td-logo"><i style="color:rgb(173, 50, 87);" class="fas fa-meteor fa-3x"></i></td>
+            <td class = "td-name"> <p>XLM</p> </td>
+            <td class = "td-amount"> <p>{{ session['user']['portfolio']['XLM'][0] }}</p> </td>
+            <td class = "td-invested"> <p>{{ session['user']['portfolio']['XLM'][1] }} €</p> </td>
+            <td class = "td-value"> <p>{{ session['user']['portfolio']['XLM'][2] }} €</p> </td>
+            {% if session['user']['portfolio']['XLM'][3] >= 0 %}
+            <td class = "td-profit"> <p>{{ session['user']['portfolio']['XLM'][3] }} %</p> </td>
+            {% else %}
+            <td class = "td-deficit"> <p>{{ session['user']['portfolio']['XLM'][3] }} %</p> </td>
+            {% endif %}
+            <td class="curr-action">
+                <a class="btn btn-info" href="#"> Buy </button>
+                <a class="btn btn-warning" href="#"> Sell </button>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,52 @@
+{% extends "base_dashboard.html" %}
+
+{% block content %}
+
+<div id = "price_chart_1">
+</div>
+<div id = "price_chart_2">
+</div>
+
+
+
+<!-- D3.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<!-- Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-2.0.0.min.js"></script>
+<!-- import Pusher-js library -->
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<script type="text/javascript">
+    var layout1 = {
+            title: 'BTC graph',
+            paper_bgcolor: "rgba(38,38,38,255)",
+            plot_bgcolor: "rgba(38,38,38,255)",
+            font: {
+                color: 'rgb(255, 255, 255)'
+            }
+        };
+    var layout2 = {
+            title: 'ETH graph',
+            paper_bgcolor: "rgba(38,38,38,255)",
+            plot_bgcolor: "rgba(38,38,38,255)",
+            font: {
+                color: 'rgb(255, 255, 255)'
+            }
+        };
+    // connect to Pusher
+    const pusher = new Pusher('71b1ee070871ec567e6e', {
+    cluster: 'eu', // gotten from Pusher app dashboard
+    encrypted: true // optional
+    });
+    // subscribe to crypto channel
+    const channel = pusher.subscribe('crypto')
+    // listen for relevant events
+    channel.bind('data-updated', data => {
+        const graph_1 = JSON.parse(data.graph_1);
+        Plotly.newPlot('price_chart_1', graph_1, layout1);
+        const graph_2 = JSON.parse(data.graph_2);
+        Plotly.newPlot('price_chart_2', graph_2, layout2);
+    });
+</script>
+{% endblock content %}

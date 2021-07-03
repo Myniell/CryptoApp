@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <header class="header sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm" id="nav1">
+        <div class="container"><a class="navbar-brand" href="#">
+            <strong class="h6 mb-0 font-weight-bold"><i class="fab fa-bitcoin"></i> CryptoFans</strong></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="/about/">About</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" href="/disabled/">Disabled</a></li>
+                </ul>
+            </div>
+            <a class="nav-link" href="/login/">Log in</a>
+        </div>
+    </nav>
+    </header>
+        <div class = "about-wrapper">
+            <div class = "to-do-wrapper">
+                <div class="to-do-block">
+                    <div class="header-block">
+                        <h4>Application Functionalities</h4>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <ul>
+                            <li>Have a secure login/signup system. <i style = "color:green" class="far fa-check-square fa-lg"></i></li>
+                            <li>Be able to track crypto prices in real time. <i style = "color:green" class="far fa-check-square fa-lg"></i></li>
+                            <li>Own a portfolio of different types of crypto and track the changing values. <i style = "color:green" class="far fa-check-square fa-lg"></i></li>
+                            <li>Have the possibility to check price history under the form of a graph for each coin. <i style = "color:green" class="far fa-check-square fa-lg"></i></li>
+                            <li>Trade currency at any time</li>
+                            <li>Compete with others based on profit per time estimate</li>
+                            <li>Offer the user more customizable options (ex: light/dark mode dashboard, different layout, enable notifications etc...)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class = "update-wrapper overflow-auto">
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Quality-of-life improvements</h4>
+                        <h5>27/06/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p>Create a requirements.txt file with all the used packages in order to give other developpers an easier time downloading the project.</p>
+                    </div>
+                </div>
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Optimization</h4>
+                        <h5>24/06/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p>Restructured several scheduled tasks to reduce strain while updating all the user tables. The app loads considerably faster now.</p>
+                    </div>
+                </div>
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Front design update 0.3</h4>
+                        <h5>18/06/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p>Added another tab (About) to the landing page to track the progress on the app.</p>
+                    </div>
+                </div>
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Terminal Demo</h4>
+                        <h5>15/06/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p>Created a simple python terminal demo to ilustrate the functionalities of the web application.</p>
+                    </div>
+                </div>
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Back-end update 0.2</h4>
+                        <h5>11/06/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p>Added schedulers to process the database data every 5 seconds and update the front-end values.</p>
+                    </div>
+                </div>
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Front design update 0.2</h4>
+                        <h5>10/06/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p> Finished the dashboard design. Ploted the data received from the crypto API. Implemented the "Current crypto prices" tab which tracks values every 10 seconds.</p>
+                    </div>
+                </div>
+
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Back-end update 0.1</h4>
+                        <h5>06/06/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p> Created a fully functional register/login system. The data is stored in a mongoDB database. All the passwords are encrypted. All the rules concerning account registration are respected (no null fields, @ and .extension for email field, character restriction for password). All emails are unique and the dashboard is unaccessible without a current session in progress. </p>
+                    </div>
+                </div>
+
+                <div class="update-block">
+                    <div class="header-block">
+                        <h4>Front design update 0.1</h4>
+                        <h5>29/05/2021</p>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <p> Created the overall design for the homepage, login, sign up and about page. Set up a mongoDB database to work with the future register/log in system. Found a way to encrypt the passwords. </p>
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class = "working-on-wrapper">
+                <div class="working-on-block">
+                    <div class="header-block">
+                        <h4>Working on</h4>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <ul>
+                            <li> Creating the design of the web application. <i style = "color:green" class="far fa-check-square fa-lg"></i></li>
+                            <li> Implementing a secure user authentification system. <i style = "color:green" class="far fa-check-square fa-lg"></i></li>
+                            <li> Creating the user database and link it to the front-end. <i style = "color:green" class="far fa-check-square fa-lg"></i></li>
+                            <li> Linking all the dashboard form inputs to the user database. <i style = "color: orange" class="fas fa-hourglass-half fa-lg"></i></li>
+                            <li> Writing the javascript to update the crypto fields without needing to refresh the page. <i style = "color: orange" class="fas fa-hourglass-half fa-lg"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="working-on-block">
+                    <div class="header-block">
+                        <h4>Known bugs</h4>
+                    </div>
+                    <hr/>
+                    <div class="content-block">
+                        <ul>
+                            <li> Certain resolutions cause the portfolio table to overflow.</li>
+                            <li> More detailed percentage values in profit/loss lead to undesired line splitting</li>
+                            <li> The database values and the website "Current prices" table are sometimes not in sync by 1~2 seconds</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock content %}

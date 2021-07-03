@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile intergration-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- My own CSS sheets -->
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Fontawesome for the icons -->
+    <script src="https://kit.fontawesome.com/de7b6dc716.js" crossorigin="anonymous"></script>
+    <!-- Google Roboto font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <title>CryptoFans</title>
+</head>
+<body>
+    
+    <div id = "main-wrapper">
+
+        <!-- SIDE BAR -->
+    
+        <div id="sidebar-wrapper">
+            <div id = "logo-wrapper" class = "center">
+                <img class = "logo-img" src = "/static/logo.png" />
+            </div>
+            <div class = "logo-title center">
+                <p class = "logo-white">Crypto</p><p class ="logo-yellow">Fans</p>
+            </div>
+            <div id = "side_menu" class = "menu-wrapper">
+                <ul class="sidebar-nav">
+                    <hr/>
+                    <li>
+                        <a href="/dashboard/" class = "active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-award"></i> Top 50</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="far fa-caret-square-right"></i> Activity</a>
+                    </li>
+                    <li>
+                        <a href="/charts/"><i class="fas fa-chart-line"></i>Charts</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-sliders-h"></i>Settings</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="far fa-question-circle"></i>Help</a>
+                    </li>
+                    <hr/>
+                </ul>
+            </div>
+            <div class = "author center">
+                <p> Designed by Myniell </p>
+            </div>
+        </div>
+    
+        <!-- TOP DASHBOARD BAR -->
+        <div id = content-wrapper>
+            <div id ="dashboard-wrapper">
+                <h2>Dashboard</h2>
+                <div class = "side-dash">
+                    <h3 id="firsth3"><i class="fas fa-user"></i> {{ session['user']['email'] }} </h3>
+                    <h3><a class = "logout" href = "/user/signout"><i class="fas fa-sign-out-alt"></i> Sign out </a></h3>
+                </div>
+            </div>
+    
+            <!-- MIDDLE SECTION -->
+    
+            <div id="middle-wrapper">
+    
+             <!-- First case -->
+    
+                <div class="middle-card">
+                    <div class="middle-top">
+                        <div class="middle-logo center">
+                            <i id = "wallet" class="fas fa-wallet fa-5x"></i>
+                        </div>
+                        <div class="middle-desc">
+                            <div class="desc-top">
+                                Total capital
+                            </div>
+                            <div class="desc-bot">
+                            {% if session['user']['total_value'][2] >= 0 %}
+                            <p id="current-profit"> {{ session['user']['total_value'][2] }} %</p>
+                            {% else %}
+                            <p id="current-deficit"> {{ session['user']['total_value'][2] }} %</p>
+                            {% endif %}
+                            <p id="current-amount">€ {{ session['user']['total_value'][1] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle-bot">
+                    <hr/>
+                        <p><i id="reload" class="fas fa-sync-alt"></i> Updated every minute</p>
+                    </div>
+                </div>
+    
+            <!-- Second case -->
+    
+                <div class="middle-card">
+                    <div class="middle-top">
+                        <div class="middle-logo center">
+                            <i id = "chart" class="far fa-chart-bar fa-5x"></i>
+                        </div>
+                        <div class="middle-desc">
+                            <div class="desc-top">
+                                Trade history
+                            </div>
+                            <div class="desc-bot center">
+                                <p style="font-size:30px;"> GRAPH PLACEHOLDER </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle-bot">
+                    <hr/>
+                        <p><i id="reload" class="fas fa-sync-alt"></i> Last X days </p>
+                    </div>
+                </div>
+    
+            <!-- Third case -->
+    
+                <div class="middle-card">
+                    <div class="middle-top">
+                        <div class="middle-logo center">
+                            <i id = "trophy" class="fas fa-trophy fa-5x"></i>
+                        </div>
+                        <div class="middle-desc">
+                            <div class="desc-top">
+                                Ranking
+                            </div>
+                            <div class="desc-bot">
+                            <p id="current-profit"><i id= "award" class="fas fa-award"></i></p>
+                            <p id="current-amount">#{{ total_users }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle-bot">
+                    <hr/>
+                        <p><i id="medal" class="fas fa-medal"></i> {{total_users}} other participants</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- BOTTOM SECTION -->
+    
+            <div id="bottom-wrapper">
+                <div class="portfolio">
+                {% block content %}
+    
+                {% endblock content %}
+                </div>
+                <div class="rlt-value">
+                <div class="portfolio-header">
+                    <h2> Currency value </h2>
+                    <h5> Updated every 10 seconds </h2>
+                </div>
+                <div class = "rlt-body">
+                    <table id="curr-table" class = "table table-striped">
+                        <tr class = "test">
+                            <th>Coin</th>
+                            <th>Value</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td class = "curr_p"><p>BTC</p></td>
+                            <td class = "curr_p"><p>{{ btc_p }} €</p></td>
+                            {% if profit_btc>= 0 %}
+                            <td><p id = "green_p">{{profit_btc}} %</p></td>
+                            {% else %}
+                            <td><p id = "red_p">{{profit_btc}} %</p></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class = "curr_p"><p>ETH</p></td>
+                            <td class = "curr_p"><p>{{ eth_p }} €</p></td>
+                            {% if profit_eth>= 0 %}
+                            <td><p id = "green_p">{{profit_eth}} %</p></td>
+                            {% else %}
+                            <td><p id = "red_p">{{profit_eth}} %</p></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class = "curr_p"><p>XRP</p></td>
+                            <td class = "curr_p"><p>{{ xrp_p }} €</p></td>
+                            {% if profit_xrp>= 0 %}
+                            <td><p id = "green_p">{{profit_xrp}} %</p></td>
+                            {% else %}
+                            <td><p id = "red_p">{{profit_xrp}} %</p></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class = "curr_p"><p>ADA</p></td>
+                            <td class = "curr_p"><p>{{ ada_p }} €</p></td>
+                            {% if profit_ada>= 0 %}
+                            <td><p id = "green_p">{{profit_ada}} %</p></td>
+                            {% else %}
+                            <td><p id = "red_p">{{profit_ada}} %</p></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class = "curr_p"><p>XLM</p></td>
+                            <td class = "curr_p"><p>{{ xlm_p }} €</p></td>
+                            {% if profit_xlm >= 0 %}
+                            <td><p id = "green_p">{{profit_xlm}} %</p></td>
+                            {% else %}
+                            <td><p id = "red_p">{{profit_xlm}} %</p></td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>
